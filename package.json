@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "node ace serve --watch",
-    "build": "node ace build --production",
+    "build": "node ace build --production --ignore-ts-errors",
     "start": "node server.js"
   },
   "devDependencies": {
@@ -15,7 +15,7 @@
     "youch": "^2.2.2",
     "youch-terminal": "^1.1.1"
   },
-  "dependencies": {
+  "dependencies": {aa
     "@adonisjs/auth": "^8.0.10",
     "@adonisjs/core": "^5.4.1",
     "@adonisjs/lucid": "^16.3.2",
