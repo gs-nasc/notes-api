@@ -8,6 +8,7 @@ export default class Tasks extends BaseSchema {
       table.increments('id')
 
       table.integer('user_id').unsigned().references('id').inTable('users').onDelete('CASCADE')
+      table.string('title').notNullable()
       table.text('description').notNullable()
       table.string('color').notNullable()
       table.boolean('completed').notNullable().defaultTo(false)

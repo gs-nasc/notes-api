@@ -10,6 +10,9 @@ export default class Task extends BaseModel {
   public userId: number
 
   @column()
+  public title: string
+  
+  @column()
   public description: string
 
   @column()
