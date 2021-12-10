@@ -28,7 +28,7 @@ export default class TasksController {
     public async update({ auth, params, request, response }: HttpContextContract) {
         const user = await auth.authenticate();
         const task = await Task.findOrFail(params.id);
-        const data = request.only(['description', 'completed']);
+        const data = request.only(['description', 'completed', 'title', 'color']);
         if (task.userId === user.id) {
             task.merge(data);
             if (await task.save()) {
@@ -50,8 +50,10 @@ export default class TasksController {
     public async store({ auth, request }: HttpContextContract) {
         const user = await auth.authenticate();
         const task = new Task();
-        const data = request.only(['description']);
+        const data = request.only(['description', "color", "title"]);
         task.description = data.description;
+        task.title = data.title;
+        task.color = data.color || '#ffffff';
 
         await user.related('tasks').save(task);
         return task;
