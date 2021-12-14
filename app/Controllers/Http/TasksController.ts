@@ -88,4 +88,9 @@ export default class TasksController {
         }
     }
 
+    public async search({params, auth}: HttpContextContract) {
+        const user = await auth.authenticate();
+        const tasks = await Task.query().where('user_id', user.id).where('deleted', false).where('title', 'like', `%${params.query}%`).preload('user');
+        return tasks;
+    }
 }
