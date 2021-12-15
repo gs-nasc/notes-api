@@ -25,6 +25,7 @@ Route.group(() => {
     Route.post('login', 'AuthController.login'),
     Route.group(() => {
       Route.resource('tasks', 'TasksController').apiOnly(),
-        Route.get('users/tasks', 'UsersController.tasksByUser')
+        Route.get('users/tasks', 'UsersController.tasksByUser'),
+        Route.post('tasks/search', 'TasksController.search')
     }).middleware('auth:api')
 }).prefix('api/v1');
